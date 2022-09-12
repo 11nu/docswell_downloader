@@ -42,6 +42,6 @@ python docswell_downloader.py
 
 ## License
 
-Copyright (c) Copyright 2022 [@11nu](https://github.com/11nu). All rights reserved.
+Copyright (c) 2022 [@11nu](https://github.com/11nu). All rights reserved.
 
 Licensed under the [Apache License, Version 2.0](LICENSE.txt).
