@@ -4,23 +4,23 @@ name: pre-commit
   push:
     branches:
       - main
-  jobs:
-    pre-commit:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout.
-          uses: actions/checkout@v3
-        - name: Setup Python 3.x.
-          uses: actions/setup-python@v4
-          with:
-            python-version: "3.x"
-        - name: Install pre-commit dependencies.
-          run: >
-            pip3 install
-            flake8
-            flake8-bugbear
-            flake8-builtins
-            flake8-eradicate
-            pep8-naming
-        - name: Run pre-commit against all files.
-          uses: pre-commit/action@v3.0.0
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout.
+        uses: actions/checkout@v3
+      - name: Setup Python 3.x.
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install pre-commit dependencies.
+        run: >
+          pip3 install
+          flake8
+          flake8-bugbear
+          flake8-builtins
+          flake8-eradicate
+          pep8-naming
+      - name: Run pre-commit against all files.
+        uses: pre-commit/action@v3.0.0
