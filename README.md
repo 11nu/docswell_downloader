@@ -1,18 +1,32 @@
 # Docswell Downloader
 
-スライドシェアサービス「[ドクセル（Docswell）](https://www.docswell.com/)」のスライドをダウンロードするためのツール。
+スライドシェアサービス「[ドクセル（Docswell）](https://www.docswell.com/)」のスライドをダウンロードするためのツールです。
 
 ダウンロードが許可されているスライドを CLI 経由でダウンロードするときにお使いください。
 
-ダウンロードが許可されていないスライドをダウンロードする場合、ドクセルの[利用規約](https://www.docswell.com/note/terms)の禁止事項に抵触する可能性があるので、自己責任のもとで利用してください。
+実装上、ダウンロードが許可されていないスライドもダウンロードできますが、ドクセルの[利用規約](https://www.docswell.com/note/terms)の禁止事項に抵触する可能性が高いので自己責任のもとで利用してください。
+
+現時点では、非公開のスライドのダウンロードには対応していません。
 
 ## 使い方
 
-1. `docswell-downloader.py` を開き、変数 `slide_url` の値をダウンロードしたいスライドの URL に変更する
-2. 以下のコマンドを実行する
+### 1. 依存関係をインストールする（初回のみ）
 
 ```shell
 pip install -r requirements.txt
+```
+
+### 2. `docswell-downloader.py` を開き、変数 `slide_url` の値をダウンロードしたいスライドの URL に変更する
+
+例：
+
+```python
+slide_url = "https://www.docswell.com/s/ku-suke/LK7J5V-hello-docswell"
+```
+
+### 3. `docswell-downloader.py` を実行する
+
+```shell
 python docswell-downloader.py
 ```
 
