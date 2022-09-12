@@ -14,19 +14,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import img2pdf
 import os
-import requests
+from urllib.parse import urlparse
 
+import img2pdf
+import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm
-from urllib.parse import urlparse
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"  # noqa: E501
 
 # Override here the URL of the docswell slide you want to download.
 slide_url = "https://www.docswell.com/s/ku-suke/LK7J5V-hello-docswell"
 
 
-def download_image(url, headers={}, timeout=5):
+def download_image(url, headers=None, timeout=5):
     response = requests.get(
         url, allow_redirects=False, timeout=timeout, headers=headers)
 
@@ -43,19 +46,15 @@ def download_image(url, headers={}, timeout=5):
 
 
 def main():
-    SLIDE_FILENAME = urlparse(slide_url).path.split("/")[3]  # LK7J5V-hello-docswell
-    SLIDE_KEY = SLIDE_FILENAME[:6]  # LK7J5V
-    EMBED_URL = f"https://www.docswell.com/slide/{SLIDE_KEY}/embed"
+    slide_filename = urlparse(slide_url).path.split("/")[3]  # LK7J5V-hello-docswell
+    slide_key = slide_filename[:6]  # LK7J5V
+    embed_url = f"https://www.docswell.com/slide/{slide_key}/embed"
 
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    OUTPUT_DIR = os.path.join(BASE_DIR, "output")
-
-    USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"  # noqa: E501
     request_headers = {
         "User-Agent": USER_AGENT,
     }
 
-    html = requests.get(EMBED_URL, headers=request_headers)
+    html = requests.get(embed_url, headers=request_headers)
     soup = BeautifulSoup(html.content, "html.parser")
     thumbnail_image_elements = soup.find(
         "main", id="player").find_all("li", class_="splide__slide c-thumbnail")
@@ -74,12 +73,13 @@ def main():
 
         slide_images.append(slide_image)
 
+    output_dir = os.path.join(BASE_DIR, "output")
     abs_output_filepath = os.path.join(
-        OUTPUT_DIR, os.path.basename(f"{SLIDE_FILENAME}.pdf"))
+        output_dir, os.path.basename(f"{slide_filename}.pdf"))
     with open(abs_output_filepath, "wb") as pdf_file:
         pdf_file.write(img2pdf.convert(slide_images))
 
-    print(f"The file has been saved: {abs_output_filepath}")
+    print(f"The file has been saveds: {abs_output_filepath}")
 
 
 if __name__ == "__main__":
