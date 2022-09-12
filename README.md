@@ -1,5 +1,7 @@
 # Docswell Downloader
 
+[![pre-commit](https://github.com/11nu/docswell_downloader/actions/workflows/pre-commit.yaml/badge.svg?event=push)](https://github.com/11nu/docswell_downloader/actions/workflows/pre-commit.yaml)
+
 スライドシェアサービス「[ドクセル（Docswell）](https://www.docswell.com/)」のスライドをダウンロードするためのツールです。
 
 ダウンロードが許可されているスライドを CLI 経由でダウンロードするときにお使いください。
