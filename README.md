@@ -16,7 +16,7 @@
 pip install -r requirements.txt
 ```
 
-### 2. `docswell-downloader.py` を開き、変数 `slide_url` の値をダウンロードしたいスライドの URL に変更する
+### 2. `docswell_downloader.py` を開き、変数 `slide_url` の値をダウンロードしたいスライドの URL に変更する
 
 例：
 
@@ -24,10 +24,10 @@ pip install -r requirements.txt
 slide_url = "https://www.docswell.com/s/ku-suke/LK7J5V-hello-docswell"
 ```
 
-### 3. `docswell-downloader.py` を実行する
+### 3. `docswell_downloader.py` を実行する
 
 ```shell
-python docswell-downloader.py
+python docswell_downloader.py
 ```
 
 結果として、 `output` ディレクトリ内にスライドの PDF ファイルが生成されます。
