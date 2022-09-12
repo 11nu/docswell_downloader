@@ -1,0 +1,3 @@
+[flake8]
+# Respect the Django coding style
+max-line-length = 88
