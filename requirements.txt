@@ -1,5 +1,5 @@
 beautifulsoup4==4.11.1
-certifi==2022.6.15.1
+certifi==2022.6.15.2
 charset-normalizer==2.1.1
 deprecation==2.1.0
 idna==3.4
