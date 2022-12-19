@@ -4,7 +4,7 @@ charset-normalizer==2.1.1
 deprecation==2.1.0
 idna==3.4
 img2pdf==0.4.4
-lxml==4.9.1
+lxml==4.9.2
 packaging==21.3
 pikepdf==6.0.2
 Pillow==9.3.0
